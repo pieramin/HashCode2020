@@ -29,7 +29,7 @@ class ReturnType{
         for (int val: values) {
             builder.append(val).append(" ");
         }
-        builder.replace(builder.length() - 1, builder.length() - 1, "\n"); //replace last white space with new line
+        builder.replace(builder.length() - 1, builder.length(), "\n"); //replace last white space with new line
         return builder.toString();
     }
 }
