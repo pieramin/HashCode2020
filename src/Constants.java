@@ -2,7 +2,7 @@
 
 class Constants {
 
-    private static final String FILENAME = "d_quite_big";
+    private static final String FILENAME = "e_also_big";
     private static final String OUTPUT_FILE_EXTENSION = ".out";
     private static final String INPUT_FILE_EXTENSION = ".in";
     static final String PATH_TO_INPUT_FILE = FILENAME + INPUT_FILE_EXTENSION;
