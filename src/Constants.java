@@ -1,6 +1,12 @@
-public class Constants {
-    public static String pathToInputFile="example.in";
-    public static String pathToOutputFile=pathToInputFile.substring(0,pathToInputFile.length()-3)+".out";
-    public static boolean debug=true;
+//class with most used constants
+
+class Constants {
+
+    private static final String FILENAME = "example";
+    private static final String OUTPUT_FILE_EXTENSION = ".out";
+    private static final String INPUT_FILE_EXTENSION = ".in";
+    static final String PATH_TO_INPUT_FILE = FILENAME + INPUT_FILE_EXTENSION;
+    static final String PATH_TO_OUTPUT_FILE = FILENAME + OUTPUT_FILE_EXTENSION;//PATH_TO_INPUT_FILE.replace(INPUT_FILE_EXTENSION, OUTPUT_FILE_EXTENSION);
+    static final boolean DEBUG = true;
 }
 
