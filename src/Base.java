@@ -32,6 +32,7 @@ public class Base {
     }
 
 
+
     //this method prepares the input file to be read
     static public void openInputFile(){
         try {
@@ -136,8 +137,6 @@ public class Base {
         }
     }
 }
-
-
 
 
 
