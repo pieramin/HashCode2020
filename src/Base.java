@@ -1,13 +1,15 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 public class Base {
-    static File            inputfile;
-    static FileReader      inputfr;
-    static BufferedReader  inputbr;
+
+    static File            inputFile;
+    static FileReader      inputFr;
+    static BufferedReader  inputBr;
+
+    static File            outputFile;
+    static FileWriter      outputFw;
+    static BufferedWriter  outputBw;
 
     //This method prints "Hello Hashcode!" on the screen and tests new methods
     public static void main(String[] args) {
@@ -15,11 +17,17 @@ public class Base {
         System.out.println("Hello Hashcode!");
         //This method must be called at the start of the code
         openInputFile();
-
+        openOutputFile();
         //readLine() reads a new line from the file
         ln=readLine();
+        writeLine(ln);
+
         ln=readLine();
+        writeLine(ln);
+
         ln=readLine();
+        writeLine(ln);
+
         closeInputFile();
     }
 
@@ -27,9 +35,9 @@ public class Base {
     //this method prepares the input file to be read
     static public void openInputFile(){
         try {
-            inputfile   = new File(Constants.pathToFile);
-            inputfr     = new FileReader(inputfile);
-            inputbr     = new BufferedReader(inputfr);
+            inputFile   = new File(Constants.pathToInputFile);
+            inputFr     = new FileReader(inputFile);
+            inputBr     = new BufferedReader(inputFr);
         }
         catch(IOException e){
             System.err.println("Wrong input path! I'm exiting... ");
@@ -41,8 +49,8 @@ public class Base {
 
     static public void closeInputFile(){
         try {
-            inputfr.close();
-            inputbr.close();
+            inputFr.close();
+            inputBr.close();
         }
         catch(IOException e){
             e.printStackTrace();
@@ -54,12 +62,12 @@ public class Base {
     static public ReturnType readLine() {
         String read=null;
         try {
-            read=inputbr.readLine();
+            read=inputBr.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
         if(read==null){
-            if(Constants.debug) System.out.println("(null) returned");
+            if(Constants.debug) System.out.println("DEBUG - Read \n(null)");
             return null;
         }
 
@@ -77,7 +85,10 @@ public class Base {
         }
 
         //if debug mode in on, the method prints the value returned
-        if(Constants.debug) printLine(returnType);
+        if(Constants.debug){
+            System.out.println("DEBUG - Read:");
+            printLine(returnType);
+        }
         return returnType;
     }
 
@@ -86,7 +97,46 @@ public class Base {
     static private void printLine(ReturnType rt){
         for(int i=0;i<rt.value.length;i++) System.out.println(rt.value[i]);
     }
+
+    //This method opens the output file
+    static public void openOutputFile(){
+        try {
+            outputFile   = new File(Constants.pathToOutputFile);
+            if(outputFile.exists())
+                outputFile.delete();
+            outputFile.createNewFile();
+            outputFw     = new FileWriter(outputFile,true);
+            outputBw     = new BufferedWriter(outputFw);
+        }
+        catch(IOException e){
+            System.err.println("Error openining the output file ! I'm exiting... ");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    //This method appends the given rt to the output file
+    static public void writeLine(ReturnType rt){
+        String tmp="";
+        if(rt==null) {
+            if(Constants.debug) System.out.println("DEBUG - Line to write: "+ tmp);
+            return;
+        }
+        for(int i=0;i<rt.value.length-1;i++)
+            tmp+=rt.value[i]+" ";
+        tmp+=rt.value[rt.value.length-1]+"\n";
+        if(Constants.debug) System.out.println("DEBUG - Line to write: "+ tmp);
+
+        try{
+            outputBw.write(tmp);
+            outputBw.flush();
+        } catch (IOException e){
+            System.err.println("Unable to write in "+ Constants.pathToOutputFile);
+            e.printStackTrace();
+        }
+    }
 }
+
 
 
 
