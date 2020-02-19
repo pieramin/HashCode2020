@@ -4,7 +4,7 @@ import java.util.Arrays;
 class ReturnType{
 
     //here we use a int array to return data
-    private int[] values;
+    int[] values;
 
     //initializing the array
     ReturnType(String[] data){
