@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
-public class base {
+public class Base {
     static File            inputfile;
     static FileReader      inputfr;
     static BufferedReader  inputbr;
