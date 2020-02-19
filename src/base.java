@@ -9,14 +9,18 @@ public class base {
     static FileReader      inputfr;
     static BufferedReader  inputbr;
 
-    //This method prints "Hello Hashcode!" on the screen
+    //This method prints "Hello Hashcode!" on the screen and tests new methods
     public static void main(String[] args) {
         ReturnType ln;
         System.out.println("Hello Hashcode!");
+        //This method must be called at the start of the code
         openInputFile();
+
+        //readLine() reads a new line from the file
         ln=readLine();
         ln=readLine();
         ln=readLine();
+        closeInputFile();
     }
 
 
@@ -35,7 +39,18 @@ public class base {
 
     }
 
-    //this method should be used to read a line of integers from a file
+    static public void closeInputFile(){
+        try {
+            inputfr.close();
+            inputbr.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    //this method should be used to read a line of integers from a file.
+    //It returns a ReturnType object (array of integers) if there is another line to read,  null otherwise.
     static public ReturnType readLine() {
         String readed=null;
         try {
@@ -67,7 +82,7 @@ public class base {
     }
 
 
-    //this methos prints the velues inside rt
+    //this method prints the velues inside rt
     static private void printLine(ReturnType rt){
         for(int i=0;i<rt.value.length;i++) System.out.println(rt.value[i]);
     }
