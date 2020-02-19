@@ -52,20 +52,20 @@ public class Base {
     //this method should be used to read a line of integers from a file.
     //It returns a ReturnType object (array of integers) if there is another line to read,  null otherwise.
     static public ReturnType readLine() {
-        String readed=null;
+        String read=null;
         try {
-            readed=inputbr.readLine();
+            read=inputbr.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(readed==null){
+        if(read==null){
             if(Constants.debug) System.out.println("(null) returned");
             return null;
         }
 
         //The parse from document is performed with Strings. Tmp allows us to convert a string into an int
         String[] tmp;
-        tmp=readed.split(" ");
+        tmp=read.split(" ");
 
         //Initialising the returnType
         ReturnType returnType;
