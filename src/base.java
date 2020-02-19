@@ -75,7 +75,7 @@ public class base {
 
 
 
-//This class represents the return type of the methods in base class
+//This class represents the return type of the methods in the base class
 class ReturnType{
     //here we use a int array to return data
     int[] value;
